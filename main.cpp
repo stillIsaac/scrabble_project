@@ -31,10 +31,42 @@ std::vector<std::string> tokenize(std::string line) {
         tokens.push_back(intermediate);
     }
      
-
+    
 
     return tokens;
 };
+
+// sacado de chatgpt: 
+// revisa si hay caracteres especiales dentro de un string
+bool specialChars( std::string& str) {
+
+    bool special_char = false;
+    for (char ch : str) {
+
+        // Check if the character is not alphanumeric
+        if (!std::isalnum(ch)) {
+
+            special_char = true; // Found a special character
+        }
+    }
+
+    return special_char; // No special characters found
+};
+
+bool hasNumber(std::string& str) {
+
+    for (char ch : str) {
+
+        if (std::isdigit(ch)) {
+
+            return true; // Found a numeric digit
+        }
+    }
+    
+    return false; // No numeric digits found
+};
+
+
 
 int main() {
 
@@ -96,7 +128,7 @@ int main() {
 
         else if(comands[0] == "puntaje") {
 
-            if(false) { // palabra con carateres invalidos 
+            if(specialChars(comands[1]) || hasNumber(comands[1])) { // palabra con carateres invalidos 
 
                 cote("La palabra contiene simbolos invalidos");
             }
@@ -110,6 +142,105 @@ int main() {
                 cote("tanto");
             }
         }
+
+        else if( comands[0] == "iniciar_arbol") {
+            
+
+            if(comands[1] == "diccionario.txt") { // need to change this
+
+                if(true) {
+
+                    cote("El arbol del diccionario se ha inicializado correctamente");
+                }
+                else {
+
+                    cote("El arbol del diccionario ya ha sido inicializado");
+                }
+            }
+            else{
+
+                cot("el nombre de archivo ");
+                cot(comands[1]);
+                cote(" no existe");
+            }
+        }
+
+        else if( comands[0] == "iniciar_arbol_inverso") {
+            
+
+            if(comands[1] == "diccionario.txt") { // need to change this
+
+                if(true) {
+
+                    cote("El arbol del diccionario inverso se ha inicializado correctamente");
+                }
+                else {
+
+                    cote("El arbol del diccionario inverso ya ha sido inicializado");
+                }
+            }
+            else{
+
+                cot("el nombre de archivo ");
+                cot(comands[1]);
+                cote(" no existe");
+            }
+        }
+
+        else if(comands[0] == "palabras_por_prefijo") {
+
+             if(specialChars(comands[1]) || hasNumber(comands[1])) { // o no se encuentra en el diccionario 
+
+                cote("El prefijo nose pudo encontrarse en el diccionario");
+             }
+
+             else {
+
+                cote("Las palabras que inician con este prefijo son: ");
+             }
+        }
+
+        else if(comands[0] == "palabras_por_sufijo") {
+
+             if(specialChars(comands[1]) || hasNumber(comands[1])) { // o no se encuentra en el diccionario 
+
+                cote("El sufijo nose pudo encontrarse en el diccionario");
+             }
+
+             else {
+
+                cote("Las palabras que terminan con este sufijo son: ");
+             }
+        }
+
+        else if(comand == "grafo_de_palabras") {
+
+            if(true) {
+
+                cote("Grafo construido correctamente");
+            }
+
+            else {
+
+                cote("Problemas tecnicos, no se pudo construir el grafo");
+            }
+        }
+
+        else if(comands[0] == "posibles_palabras") {
+                cote("entra");
+             if(specialChars(comands[1]) || hasNumber(comands[1])) { // o no se encuentra en el diccionario 
+
+                cote("La cadena letras contiene simbolos invalidos");
+             }
+
+             else {
+
+                cote("Las posibles palabras a construir con las letras letras son: ");
+             }
+        }
+
+
+
     }   
 
 

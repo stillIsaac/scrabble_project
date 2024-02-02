@@ -103,7 +103,8 @@ int main() {
             }
             else{
 
-                cote("el archivo no existe");
+                cot("el archivo no existe ");
+                cote(comands[1]);
             }
         }
 
@@ -227,7 +228,7 @@ int main() {
         }
 
         else if(comands[0] == "posibles_palabras") {
-                cote("entra");
+         
              if(specialChars(comands[1]) || hasNumber(comands[1])) { // o no se encuentra en el diccionario 
 
                 cote("La cadena letras contiene simbolos invalidos");
@@ -237,6 +238,66 @@ int main() {
 
                 cote("Las posibles palabras a construir con las letras letras son: ");
              }
+        }
+
+        else if (comands[0] == "ayuda") {
+
+            if(comands[1] == "ayuda") {
+
+                cote("esto lo pone mapu");
+            }
+
+            else if( comands[1] == "inicializar" ) {
+                 
+                 cote("mapu");
+            }
+
+
+            else if( comands[1] == "iniciar_inverso" ) {
+                 
+                 cote("mapu");
+            }
+
+            else if( comands[1] == "puntaje" ) {
+                 
+                 cote("mapu");
+            }
+
+            else if( comands[1] == "salir" ) {
+                 
+                 cote("mapu");
+            }
+
+            else if( comands[1] == "iniciar_arbol" ) {
+                 
+                 cote("mapu");
+            }
+
+            else if( comands[1] == "iniciar_arbol_inverso" ) {
+                 
+                 cote("mapu");
+            }
+
+            else if( comands[1] == "palabras_por_prefijo" ) {
+                 
+                 cote("mapu");
+            }
+
+            else if( comands[1] == "palabras_por_sufijo" ) {
+                 
+                 cote("mapu");
+            }
+
+            else if( comands[1] == "grafo_de_palabras" ) {
+                 
+                 cote("mapu");
+            }
+
+            else if( comands[1] == "posibles_palabras" ) {
+                 
+                 cote("mapu");
+            }
+        
         }
 
 

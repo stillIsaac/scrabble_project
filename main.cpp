@@ -244,7 +244,7 @@ int main() {
 
             if(comands[1] == "ayuda") {
 
-                cote("esto lo pone mapu");
+                cote("esto lo esta poniendo mapu");
             }
 
             else if( comands[1] == "inicializar" ) {

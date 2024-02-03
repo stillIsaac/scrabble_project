@@ -252,7 +252,6 @@ int main() {
                  cote("mapu");
             }
 
-
             else if( comands[1] == "iniciar_inverso" ) {
                  
                  cote("mapu");
@@ -295,7 +294,7 @@ int main() {
 
             else if( comands[1] == "posibles_palabras" ) {
                  
-                 cote("mapu");
+                 cote("esto es una explicacion de posibles palabras (toca cambiarlo)");
             }
         
         }

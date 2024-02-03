@@ -249,7 +249,7 @@ int main() {
 
             else if( comands[1] == "inicializar" ) {
                  
-                 cote("mapu");
+                 cote("mapu AaAaAaAa");
             }
 
             else if( comands[1] == "iniciar_inverso" ) {

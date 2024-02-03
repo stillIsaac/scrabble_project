@@ -289,7 +289,7 @@ int main() {
 
             else if( comands[1] == "grafo_de_palabras" ) {
                  
-                 cote("mapu");
+                 cote("este es el grafo loco de palabras");
             }
 
             else if( comands[1] == "posibles_palabras" ) {

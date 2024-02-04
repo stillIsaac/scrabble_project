@@ -252,7 +252,7 @@ int main() {
                  cote("Inicializa el sistema a partir un archivo que contiene un diccionario de palabras aceptadas en inglés.");
                  cote("[Diccionario ya inicializado] Indica que el diccionario ya se ha inicializado previamente");
                  cote("[Archivo no existe] Indica que el archivo que contiene el diccionario no existe o no puede ser leído");
-                 cote("[Resultado exitoso] Indica que el diccionario se ha inicializado correctamente.";)
+                 cote("[Resultado exitoso] Indica que el diccionario se ha inicializado correctamente.");
             }
 
             else if( comands[1] == "iniciar_inverso" ) {
@@ -260,7 +260,7 @@ int main() {
                  cote("Inicializa el sistema a partir del archivo del diccionario almacenando las palabras en sentido inverso");
                  cote("[Diccionario ya inicializado] Indica que el diccionario ya se ha inicializado previamente");
                  cote("[Archivo no existe] Indica que el archivo que contiene el diccionario no existe o no puede ser leído");
-                 cote("[Resultado exitoso] Indica que el diccionario se ha inicializado correctamente.";)
+                 cote("[Resultado exitoso] Indica que el diccionario se ha inicializado correctamente.");
             
             }
 

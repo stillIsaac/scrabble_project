@@ -7,9 +7,18 @@ Comportamiento:
 - obtenerPalabraPorPrefijo(), prefijo: palabras_suf; esta operación recibe como parámetro un prefijo y busca todas las palabras dentro del vector que tengan este.
 
 
-TAD: valor_letra
+TAD: ValorLetra
 Estado:
 - letra, caracter que almacena una letra en específico
 - puntaje, es un entero que almacena la puntuación asignada para la letra
-
 Comportamiento: 
+
+
+TAD: Scrabble
+Estado:
+- diccionario, es un TAD diccionario que contiene todas la palabras para el juego
+- vecValorLetra, es un vector con todos los valores asignados a cada letra
+Comportamiento:
+- puntajePalabra(), palabra: entero, calcula el valor de una palabra dada y retorna un entero con el valor de esta
+- iniciarDiccionario(), nombreArchivo: bool, carga el archivo diccionario.txt dentro del vector diccionario (retorna true), en caso de que no exista el archivo u ocurra un error, retorna false
+- iniciarDiccionarioInverso(), nombreArchivo: bool, carga el archivo diccionario.txt dentro del vector diccionario pero esta vez ingresa las palabras al revés (retorna true), en caso de que no exista el archivo u ocurra un error, retorna false

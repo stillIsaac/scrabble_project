@@ -75,7 +75,7 @@ int main() {
     std::string comand;
     while(!control) {
 
-        cote("please add a command");
+      
         cot("$ ");
         std::getline(std::cin,comand);
         std::vector<std::string> comands = tokenize(comand);
@@ -244,12 +244,12 @@ int main() {
 
             if(comands[1] == "ayuda") {
 
-                cote("Muestra una descripcion de la funcion del comando y la explicacion de sus [posibles salidas]");
+                cote("ayuda: Muestra una descripcion de la funcion del comando y la explicacion de sus [posibles salidas]");
             }
 
-            else if( comands[1] == "inicializar dic" ) {
+            else if( comands[1] == "inicializar" ) {
                  
-                 cote("Inicializa el sistema a partir un archivo que contiene un diccionario de palabras aceptadas en inglés.");
+                 cote(" inicializar: Inicializa el sistema a partir un archivo que contiene un diccionario de palabras aceptadas en inglés.");
                  cote("[Diccionario ya inicializado] Indica que el diccionario ya se ha inicializado previamente");
                  cote("[Archivo no existe] Indica que el archivo que contiene el diccionario no existe o no puede ser leído");
                  cote("[Resultado exitoso] Indica que el diccionario se ha inicializado correctamente.");
@@ -257,7 +257,7 @@ int main() {
 
             else if( comands[1] == "iniciar_inverso" ) {
                  
-                 cote("Inicializa el sistema a partir del archivo del diccionario almacenando las palabras en sentido inverso");
+                 cote("iniciar_inverso: Inicializa el sistema a partir del archivo del diccionario almacenando las palabras en sentido inverso");
                  cote("[Diccionario ya inicializado] Indica que el diccionario ya se ha inicializado previamente");
                  cote("[Archivo no existe] Indica que el archivo que contiene el diccionario no existe o no puede ser leído");
                  cote("[Resultado exitoso] Indica que el diccionario se ha inicializado correctamente.");
@@ -266,7 +266,7 @@ int main() {
 
             else if( comands[1] == "puntaje palabra" ) {
                  
-                 cote("Obtiene el puntaje de una palabra dada.");
+                 cote("puntaje palabra: Obtiene el puntaje de una palabra dada.");
                  cote("[Palabra no existe] Informa que la palabra no existe en el diccionario");
                  cote("[Letras invalidas] Informa que la palabra contiene simbolos invalidos");
                  cote("[Resultado exitoso] Muestra el puntaje de la palabra");
@@ -274,12 +274,12 @@ int main() {
 
             else if( comands[1] == "salir" ) {
                  
-                 cote("Termina la ejecucion de la aplicacion");
+                 cote("salir: Termina la ejecucion de la aplicacion");
             }
 
             else if( comands[1] == "iniciar_arbol diccionario.txt" ) {
                  
-                 cote("Inicializa el sistema a partir del archivo del diccionario almacenando las palabras en uno o mas arboles de letras");
+                 cote("iniciar_arbol: Inicializa el sistema a partir del archivo del diccionario almacenando las palabras en uno o mas arboles de letras");
                  cote("[Arbol ya inicializado] Indica que el arbol del diccionario ya se ha inicializado");
                  cote("[Archivo no existe] El archivo del diccionario no existe o no puede ser leído");
                  cote("[Resultado exitoso] El arbol del diccionario se ha inicializado correctamente");
@@ -287,7 +287,7 @@ int main() {
 
             else if( comands[1] == "iniciar_arbol_inverso" ) {
 
-                 cote("Inicializa el sistema a partir del archivo del diccionario almacenando las palabras en arboles de letras en sentido inverso");
+                 cote("iniciar_arbol_inverso: Inicializa el sistema a partir del archivo del diccionario almacenando las palabras en arboles de letras en sentido inverso");
                  cote("[Arbol ya inicializado] Indica que el arbol del diccionario inverso ya se ha inicializado");
                  cote("[Archivo no existe] El archivo del diccionario no existe o no puede ser leído");
                  cote("[Resultado exitoso] El arbol del diccionario inverso se ha inicializado correctamente");
@@ -296,7 +296,7 @@ int main() {
 
             else if( comands[1] == "palabras_por_prefijo" ) {
                  
-                 cote("Busca todas las palabras que inician con un prefijo dado");
+                 cote("palabras_por_prefijo: Busca todas las palabras que inician con un prefijo dado");
                  cote("[Prefijo invalido] El prefijo no pudo encontrarse en el diccionario");
                  cote("[Resultado exitoso] Muestra las palabras encontradas en el diccionario con ese prefijo");
                  
@@ -304,7 +304,7 @@ int main() {
 
             else if( comands[1] == "palabras_por_sufijo" ) {
                  
-                 cote("Busca todas las palabras que inician con un sufijo dado");
+                 cote("palabras_por_sufijo: Busca todas las palabras que inician con un sufijo dado");
                  cote("[Prefijo invalido] El sufijo no pudo encontrarse en el diccionario");
                  cote("[Resultado exitoso] Muestra las palabras encontradas en el diccionario con ese sufijo");
                  
@@ -312,13 +312,13 @@ int main() {
 
             else if( comands[1] == "grafo_de_palabras" ) {
                  
-                 cote("Construye un grafo de palabras, conectando palabras que difieren en una unica letra");
+                 cote("grafo_de_palabras: Construye un grafo de palabras, conectando palabras que difieren en una unica letra");
                  cote("[Resultado exitoso] Informa que el grafo se ha construido correctamente");
             }
 
             else if( comands[1] == "posibles_palabras" ) {
                  
-                 cote("Muestra todas las posibles palabras validas a construir con la letras dadas");
+                 cote("posibles_palabras: Muestra todas las posibles palabras validas a construir con la letras dadas");
                  cote("[Letras invalidas] La palabra contiene simbolos invalidos");
                  cote("[Resultado exitoso] Muestra las posibles palabras para construir con las letras dadas");
             }

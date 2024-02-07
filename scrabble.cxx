@@ -124,8 +124,9 @@ void Scrabble::terminal() {
             }
             else{
 
-                cot("el archivo no existe ");
-                cote(comands[1]);
+                cot("el archivo: ");
+                cot(comands[1]);
+                cote(" no existe por favor ingrese un nombre de archivo valido");
             }
         }
 
@@ -181,7 +182,7 @@ void Scrabble::terminal() {
             }
             else{
 
-                cot("el nombre de archivo ");
+                cot("el nombre de archivo: ");
                 cot(comands[1]);
                 cote(" no existe");
             }
@@ -203,7 +204,7 @@ void Scrabble::terminal() {
             }
             else{
 
-                cot("el nombre de archivo ");
+                cot("el nombre de archivo: ");
                 cot(comands[1]);
                 cote(" no existe");
             }

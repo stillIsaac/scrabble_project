@@ -94,7 +94,7 @@ void Scrabble::terminal() {
         std::getline(std::cin,comand);
         std::vector<std::string> comands = tokenize(comand);
 
-        if(comands.size()<2 && comand != "salir") {
+        if(comands.size()<2 && comand != "salir" && (comand != "grafo_de_palabras") && (comand =! "posibles_palabras") ) {
 
             cot("comando: ");
             cot(comand);

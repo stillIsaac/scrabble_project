@@ -1,6 +1,6 @@
 TAD: Diccionario
 Estado:
-- vec_palabras, es un vector de cadenas de caracteres, almacena todas las palabras del juego (normales e inversas), cada palabra no puede contener números o caracteres especiales
+- palabras_mtrx, es un vector de vectores de cadenas de caracteres, almacena todas las palabras del juego (normales e inversas), cada palabra no puede contener números o caracteres especiales y cada vector almacena palabras con una inicial específica
 Comportamiento:
 - obtenerPalabraPorNombre(), palabra: booleano; esta operación busca una palabra específica en el arreglo y retorna true si existe o false en caso de que no exista
 - obtenerPalabraPorSufijo(), sufijo: palabras_suf; esta operación recibe como parámetro un sufijo y busca todas las palabras dentro del vector que tengan este.

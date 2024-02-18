@@ -3,7 +3,7 @@
 #include <iostream>
 #include <bits/stdc++.h>
 
-struct valorLetra {
+struct ValorLetra {
 
     int puntaje;
     char letra;

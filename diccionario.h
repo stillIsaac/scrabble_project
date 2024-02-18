@@ -2,7 +2,7 @@
 #define DICCIONARIO_H
 #include <iostream>
 #include <bits/stdc++.h>
-
+#include "valorLetra.h"
 
 
 class Diccionario {
@@ -11,6 +11,8 @@ class Diccionario {
         Diccionario();
         ~Diccionario();
         std::vector <std::vector<std::string>> vec_palabras;
+        std::vector<ValorLetra> valoresLetras;
+        void insertarValoresLetra();
         void mostraPalabras();
         bool inicializarDiccionario(std::string);
         bool inicializarDiccionarioInverso(std::string);

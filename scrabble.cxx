@@ -1,4 +1,5 @@
 #include "scrabble.h"
+#include "diccionario.h"
 #include <iostream>
 #include <bits/stdc++.h>
 
@@ -94,7 +95,7 @@ void Scrabble::terminal() {
         std::getline(std::cin,comand);
         std::vector<std::string> comands = tokenize(comand);
 
-        if(comands.size()<2 && comand != "salir" && (comand != "grafo_de_palabras") && (comand =! "posibles_palabras") ) {
+        if(comands.size()<2 && comand != "salir") {
 
             cot("comando: ");
             cot(comand);
@@ -116,6 +117,9 @@ void Scrabble::terminal() {
                 if(true) {
 
                     cote("El diccionario se ha inicializado correctamente");
+                    Diccionario dic;
+                    dic.inicializarDiccionario( "diccionario.txt");
+                    dic.mostraPalabras();
                 }
                 else {
 
@@ -137,6 +141,7 @@ void Scrabble::terminal() {
                 if(true) {
 
                     cote("El diccionario inverso se ha inicializado correctamente");
+                    
                 }
                 else {
 

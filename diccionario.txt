@@ -1,0 +1,8 @@
+airplane
+bee
+cow
+diamond
+animal
+enlightment
+fairy
+helicopter

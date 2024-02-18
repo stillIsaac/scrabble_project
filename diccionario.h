@@ -10,8 +10,8 @@ class Diccionario {
     public: 
         Diccionario();
         ~Diccionario();
-
         std::vector <std::vector<std::string>> vec_palabras;
+        void mostraPalabras();
         bool inicializarDiccionario(std::string);
         bool inicializarDiccionarioInverso(std::string);
         bool buscarPalabrasPorNombre(std::string palabra);

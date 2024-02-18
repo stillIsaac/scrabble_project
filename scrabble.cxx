@@ -119,8 +119,8 @@ void Scrabble::terminal() {
                     cote("El diccionario se ha inicializado correctamente");
                     Diccionario dic;
                     dic.inicializarDiccionario( "diccionario.txt");
-                   // dic.mostraPalabras();
-                   // dic.insertarValoresLetra();
+                    dic.mostraPalabras();
+                    dic.insertarValoresLetra();
                 }
                 else {
 

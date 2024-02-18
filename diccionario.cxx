@@ -95,7 +95,7 @@ void Diccionario::insertarValoresLetra() {
     comodin.puntaje = 10;
     valoresLetras.push_back(comodin);
 
-;}
+};
 
 bool Diccionario::inicializarDiccionario(std::string) {
     

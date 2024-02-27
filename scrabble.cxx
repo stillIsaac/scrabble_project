@@ -88,6 +88,7 @@ void Scrabble::terminal() {
     cote("Welcome to Scrabble the game of words and creativity!");
     bool control = false;
     std::string comand;
+    Diccionario dic;
     while(!control) {
 
       
@@ -117,7 +118,6 @@ void Scrabble::terminal() {
                 if(true) {
 
                     cote("El diccionario se ha inicializado correctamente");
-                    Diccionario dic;
                     dic.inicializarDiccionario( "diccionario.txt");
                     dic.mostraPalabras();
                     dic.insertarValoresLetra();
@@ -161,12 +161,12 @@ void Scrabble::terminal() {
 
                 cote("La palabra contiene simbolos invalidos");
             }
-            else if(false) { // palabra no existe
+            else if( dic.buscarPalabrasPorNombre(comands[1]) == false) { // palabra no existe
 
                 cote("La palabra no existe en el diccionario");
             }
             else {
-
+                
                 cot("La palabra tiene un puntaje de: ");
                 cote("tanto");
             }

@@ -158,7 +158,42 @@ std::vector<std::string>Diccionario::obtenerPalabrasPorSufijo(std::string palabr
 
 bool Diccionario::buscarPalabrasPorNombre(std::string palabra) {
 
-    return true;
+    bool existe = false;
+    int left= 0;
+    int right = vec_palabras.size()-1;
+    std::cout << palabra[0] << vec_palabras.size() << std::endl;
+    if(int(palabra[0])-97 < vec_palabras.size()) {
+        while(left <= right && !existe) {
+
+            int mid = left + (right-left)/2;
+            std::string palabra_evaluar = vec_palabras[mid][0];
+            
+            if(int(palabra_evaluar[0]) == int(palabra[0])) {
+                std::cout << "entra en uno infinito aqui" << std::endl;
+                for(int i = 0; i < vec_palabras[mid].size(); i++) {
+
+                    if(vec_palabras[mid][i] == palabra) {
+
+                        existe = true;
+                    }
+                }
+                left = right;
+                
+            }
+
+            else if(int(palabra_evaluar[0]) < int(palabra[0])){
+
+                std::cout << "left " << left << std::endl;
+                left = mid+1;
+            }
+
+            else {
+                std::cout << "right " << right << std::endl;
+                right = mid -1;
+            }
+        }
+    }
+    return existe;
 
 };
 

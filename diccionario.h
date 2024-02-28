@@ -14,8 +14,8 @@ class Diccionario {
         std::vector<ValorLetra> valoresLetras;
         void insertarValoresLetra();
         void mostraPalabras();
-        bool inicializarDiccionario(std::string);
-        bool inicializarDiccionarioInverso(std::string);
+        bool inicializarDiccionario(std::string nombreArchivo);
+        bool inicializarDiccionarioInverso(std::string nombreArchivo);
         bool buscarPalabrasPorNombre(std::string palabra);
         std::vector<std::string> obtenerPalabrasPorSufijo(std::string palabra);
         std::vector<std::string> obtenerPalabrasPorPrefijo(std::string palabra);

@@ -97,7 +97,7 @@ void Diccionario::insertarValoresLetra() {
 
 };
 
-bool Diccionario::inicializarDiccionario(std::string) {
+bool Diccionario::inicializarDiccionario(std::string nombreArchivo) {
     
     bool open = false;
     std::ifstream myfile; 
@@ -109,25 +109,17 @@ bool Diccionario::inicializarDiccionario(std::string) {
         open = true;
         while(myfile.good()) {
             
-            
+
             myfile >> mystring;
             if(int(mystring[0])-96 > vec_palabras.size()) {
         
-                this->vec_palabras.resize(int(mystring[0])-97+1);
+                this->vec_palabras.resize(int(mystring[0])-96);
             }
             
             this->vec_palabras[int(mystring[0])-97].push_back(mystring);
             
         }
     }
-  /*  std::cout << "bro" << std::endl;
-    for(int i = 0; i < this->vec_palabras.size(); i++) {
-
-        for(int j = 0; j  < this->vec_palabras[i].size(); j++) {
-
-            std::cout << this->vec_palabras[i][j] << std::endl;
-        }
-    }*/
 
     return open;
 };
@@ -144,9 +136,33 @@ void Diccionario::mostraPalabras() {
 };
 
 
-bool Diccionario::inicializarDiccionarioInverso(std::string) {
+bool Diccionario::inicializarDiccionarioInverso(std::string nombreArchivo) {
 
-    return false;
+    bool open = false;
+    std::ifstream myfile; 
+    myfile.open("diccionario.txt");
+    std::string mystring;
+    std::vector<std::string> vec;
+    if(myfile.is_open()) {
+
+        open = true;
+        while(myfile.good()) {
+            
+            
+            myfile >> mystring;
+            reverse(mystring.begin(), mystring.end()); 
+            if(int(mystring[0])-96 > vec_palabras.size()) {
+        
+                this->vec_palabras.resize(int(mystring[0])-97+1);
+            }
+            
+            this->vec_palabras[int(mystring[0])-97].push_back(mystring);
+            
+        }
+    }
+
+
+    return open;
 };
 
 std::vector<std::string>Diccionario::obtenerPalabrasPorSufijo(std::string palabra) {
@@ -158,18 +174,20 @@ std::vector<std::string>Diccionario::obtenerPalabrasPorSufijo(std::string palabr
 
 bool Diccionario::buscarPalabrasPorNombre(std::string palabra) {
 
+ 
     bool existe = false;
     int left= 0;
     int right = vec_palabras.size()-1;
-    std::cout << palabra[0] << vec_palabras.size() << std::endl;
     if(int(palabra[0])-97 < vec_palabras.size()) {
         while(left <= right && !existe) {
 
             int mid = left + (right-left)/2;
+
             std::string palabra_evaluar = vec_palabras[mid][0];
+               
             
             if(int(palabra_evaluar[0]) == int(palabra[0])) {
-                std::cout << "entra en uno infinito aqui" << std::endl;
+            
                 for(int i = 0; i < vec_palabras[mid].size(); i++) {
 
                     if(vec_palabras[mid][i] == palabra) {
@@ -183,25 +201,15 @@ bool Diccionario::buscarPalabrasPorNombre(std::string palabra) {
 
             else if(int(palabra_evaluar[0]) < int(palabra[0])){
 
-                std::cout << "left " << left << std::endl;
                 left = mid+1;
             }
 
             else {
-                std::cout << "right " << right << std::endl;
+            
                 right = mid -1;
             }
         }
     }
     return existe;
-
-};
-
-    
-std::vector<std::string>Diccionario::obtenerPalabrasPorPrefijo(std::string palabra) {
-
-    std::vector<std::string> palabrasPrefijo;
-
-    return palabrasPrefijo;
 
 };

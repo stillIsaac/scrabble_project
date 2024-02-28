@@ -10,6 +10,7 @@ class Scrabble {
         void terminal();
         void cot(std::string word);
         void cote(std::string word);
+        int puntajePalabra(std::string palabra);
         std::vector<std::string> tokenize(std::string line);
         bool specialChars( std::string& str);
         bool hasNumber(std::string& str);

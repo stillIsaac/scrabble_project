@@ -81,6 +81,50 @@ bool Scrabble::hasNumber(std::string& str) {
 };
 
 
+int Scrabble::puntajePalabra(std::string palabra)
+{
+    int puntaje = 0;
+
+    for (int i = 0; i < palabra.length(); i++){
+
+        if(palabra[i] == 'e' || palabra[i] == 'a' || palabra[i] == 'i' || palabra[i] == 'o' || palabra[i] == 'n' || palabra[i] == 'r' || palabra[i] == 't' || palabra[i] == 'l' || palabra[i] == 's' || palabra[i] == 'u' )
+        puntaje += 1;
+
+        else if (palabra[i] == 'd' || palabra[i] == 'g')
+        puntaje += 2;
+
+        else if (palabra[i] == 'b' || palabra[i] == 'c' || palabra[i] == 'm' || palabra[i] == 'p')
+        puntaje += 3;
+
+        else if (palabra[i] == 'f' || palabra[i] == 'h' || palabra[i] == 'v' || palabra[i] == 'w' || palabra[i] == 'y')
+        puntaje += 4;
+
+        else if (palabra[i] == 'k')
+        puntaje += 5;
+
+        else if (palabra[i] == 'j' || palabra[i] == 'x')
+        puntaje += 8;
+
+        else if (palabra[i] == 'q' || palabra[i] == 'z')
+        puntaje += 10;
+
+        else{
+            puntaje = -1;
+            std::cout << "La palabra contiene un caracter no valido \0";
+        }
+    }
+
+    return puntaje;
+};
+
+std::vector<std::string>Diccionario::obtenerPalabrasPorPrefijo(std::string palabra) {
+
+    std::vector<std::string> palabrasPrefijo;
+
+    return palabrasPrefijo;
+
+};
+
 
 void Scrabble::terminal() {
 
@@ -115,7 +159,7 @@ void Scrabble::terminal() {
 
             if(comands[1] == "diccionario.txt") { // need to change this
 
-                if(true) {
+                if(dic.vec_palabras.size() <= 0) {
 
                     cote("El diccionario se ha inicializado correctamente");
                     dic.inicializarDiccionario( "diccionario.txt");
@@ -137,21 +181,25 @@ void Scrabble::terminal() {
 
         else if(comands[0] == "iniciar_inverso") {
 
-             if(comands[1] == "diccionario.txt") { // need to change this
+            if(comands[1] == "diccionario.txt") { // need to change this
 
                 if(true) {
 
-                    cote("El diccionario inverso se ha inicializado correctamente");
-                    
+                    cote("El diccionario se ha inicializado correctamente");
+                    dic.mostraPalabras();
+                    dic.inicializarDiccionarioInverso( "diccionario.txt");
+                    dic.insertarValoresLetra();
                 }
                 else {
 
-                    cote("El diccionario inverso ya ha sido inicializado");
+                    cote("El diccionario ya ha sido inicializado");
                 }
             }
             else{
 
-                cote("el archivo no existe");
+                cot("el archivo: ");
+                cot(comands[1]);
+                cote(" no existe por favor ingrese un nombre de archivo valido");
             }
         }
 
@@ -167,8 +215,7 @@ void Scrabble::terminal() {
             }
             else {
                 
-                cot("La palabra tiene un puntaje de: ");
-                cote("tanto");
+                std::cout << "La palabra tiene un puntaje de: " << puntajePalabra(comands[1]) << std::endl;
             }
         }
 
@@ -359,3 +406,5 @@ void Scrabble::terminal() {
 
 
 }
+
+

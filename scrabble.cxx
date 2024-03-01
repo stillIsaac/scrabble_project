@@ -163,7 +163,7 @@ void Scrabble::terminal() {
 
                     cote("El diccionario se ha inicializado correctamente");
                     dic.inicializarDiccionario( "diccionario.txt");
-                    dic.mostraPalabras();
+                    //dic.mostraPalabras();
                     dic.insertarValoresLetra();
                 }
                 else {
@@ -186,7 +186,7 @@ void Scrabble::terminal() {
                 if(true) {
 
                     cote("El diccionario se ha inicializado correctamente");
-                    dic.mostraPalabras();
+                  //  dic.mostraPalabras();
                     dic.inicializarDiccionarioInverso( "diccionario.txt");
                     dic.insertarValoresLetra();
                 }

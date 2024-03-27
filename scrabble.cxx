@@ -1,5 +1,6 @@
 #include "scrabble.h"
 #include "diccionario.h"
+#include "ArbolGeneral.h"
 #include <iostream>
 #include <bits/stdc++.h>
 
@@ -117,13 +118,7 @@ int Scrabble::puntajePalabra(std::string palabra)
     return puntaje;
 };
 
-std::vector<std::string>Diccionario::obtenerPalabrasPorPrefijo(std::string palabra) {
 
-    std::vector<std::string> palabrasPrefijo;
-
-    return palabrasPrefijo;
-
-};
 
 
 void Scrabble::terminal() {
@@ -164,7 +159,7 @@ void Scrabble::terminal() {
                     cote("El diccionario se ha inicializado correctamente");
                     dic.inicializarDiccionario( "diccionario.txt");
                     //dic.mostraPalabras();
-                    dic.insertarValoresLetra();
+                    
                 }
                 else {
 
@@ -188,7 +183,7 @@ void Scrabble::terminal() {
                     cote("El diccionario se ha inicializado correctamente");
                   //  dic.mostraPalabras();
                     dic.inicializarDiccionarioInverso( "diccionario.txt");
-                    dic.insertarValoresLetra();
+                    
                 }
                 else {
 
@@ -223,8 +218,8 @@ void Scrabble::terminal() {
             
 
             if(comands[1] == "diccionario.txt") { // need to change this
-
-                if(true) {
+                
+                if(dic.iniciarArbol(comands[1])) {
 
                     cote("El arbol del diccionario se ha inicializado correctamente");
                 }
@@ -246,7 +241,7 @@ void Scrabble::terminal() {
 
             if(comands[1] == "diccionario.txt") { // need to change this
 
-                if(true) {
+                if(dic.iniciarArbolInverso(comands[1])) {
 
                     cote("El arbol del diccionario inverso se ha inicializado correctamente");
                 }
@@ -273,6 +268,12 @@ void Scrabble::terminal() {
              else {
 
                 cote("Las palabras que inician con este prefijo son: ");
+                std::list<std::string> prefijos =dic.obtenerPalabrasPorPrefijo(comands[1]); 
+                std::list<std::string>::iterator itPrefijos;
+                for(itPrefijos = prefijos.begin(); itPrefijos != prefijos.end(); itPrefijos++ ) {
+
+                    std::cout << *itPrefijos << std::endl;
+                } 
              }
         }
 
@@ -286,8 +287,15 @@ void Scrabble::terminal() {
              else {
 
                 cote("Las palabras que terminan con este sufijo son: ");
+                std::list<std::string> sufijos = dic.obtenerPalabrasPorSufijo(comands[1]);
+                std::list<std::string>::iterator itSufijos;
+                for(itSufijos = sufijos.begin(); itSufijos != sufijos.end(); itSufijos++ ) {
+
+                    std::cout << *itSufijos << std::endl;
+                } 
              }
         }
+        
 
         else if(comand == "grafo_de_palabras") {
 

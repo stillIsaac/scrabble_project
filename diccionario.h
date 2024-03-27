@@ -2,8 +2,7 @@
 #define DICCIONARIO_H
 #include <iostream>
 #include <bits/stdc++.h>
-#include "valorLetra.h"
-
+#include "ArbolGeneral.h"
 
 class Diccionario {
 
@@ -11,14 +10,16 @@ class Diccionario {
         Diccionario();
         ~Diccionario();
         std::vector <std::vector<std::string>> vec_palabras;
-        std::vector<ValorLetra> valoresLetras;
-        void insertarValoresLetra();
+        ArbolGeneral arbol;
+        ArbolGeneral arbolInverso;
         void mostraPalabras();
         bool inicializarDiccionario(std::string nombreArchivo);
         bool inicializarDiccionarioInverso(std::string nombreArchivo);
         bool buscarPalabrasPorNombre(std::string palabra);
-        std::vector<std::string> obtenerPalabrasPorSufijo(std::string palabra);
-        std::vector<std::string> obtenerPalabrasPorPrefijo(std::string palabra);
+        bool iniciarArbol(std::string archivo);
+        bool iniciarArbolInverso(std::string archivo);
+        std::list<std::string> obtenerPalabrasPorSufijo(std::string palabra);
+        std::list<std::string> obtenerPalabrasPorPrefijo(std::string palabra);
 };
 /*TAD: Diccionario
 Estado:

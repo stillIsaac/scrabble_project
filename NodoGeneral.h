@@ -8,7 +8,7 @@
 class NodoGeneral {
 public:
     char data;
-    std::list<NodoGeneral*> children;
+    std::list<NodoGeneral*> hijos;
     bool is_end_of_word;
 
     NodoGeneral(char c) : data(c), is_end_of_word(false) {}

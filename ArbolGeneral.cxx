@@ -4,12 +4,12 @@
 #include <algorithm>
 // Constructor
 ArbolGeneral::ArbolGeneral() {
-    root = new NodoGeneral('\0'); // Root node has null character data
+    raiz = new NodoGeneral('\0'); // Root node has null character data
 }
 
 // Insert function
 void ArbolGeneral::insert(std::string word) {
-    NodoGeneral* node = root;
+    NodoGeneral* node = raiz;
     for (char c : word) {
         NodoGeneral* child = nullptr;
         for (auto it = node->children.begin(); it != node->children.end(); ++it) {
@@ -72,7 +72,7 @@ bool ArbolGeneral::iniciarArbolInverso(std::string archivo) {
 // Search prefix function
 std::list<std::string> ArbolGeneral::obtenerPalabrasPorPrefijo(std::string prefix) {
     std::list<std::string> words;
-    NodoGeneral* node = root;
+    NodoGeneral* node = raiz;
     for (char c : prefix) {
         NodoGeneral* child = nullptr;
         for (auto it = node->children.begin(); it != node->children.end(); ++it) {
@@ -86,25 +86,25 @@ std::list<std::string> ArbolGeneral::obtenerPalabrasPorPrefijo(std::string prefi
         }
         node = child;
     }
-    get_words_from_node(node, prefix, words);
+    obtener_palabras_nodo(node, prefix, words);
     return words;
 }
 
 // Recursive function to retrieve words from node
-void ArbolGeneral::get_words_from_node(NodoGeneral* node, std::string prefix, std::list<std::string>& words) {
+void ArbolGeneral::obtener_palabras_nodo(NodoGeneral* node, std::string prefix, std::list<std::string>& words) {
     if (node->is_end_of_word) {
         words.push_back(prefix);
     }
     for (auto child : node->children) {
         
-        get_words_from_node(child, prefix + child->data, words);
+        obtener_palabras_nodo(child, prefix + child->data, words);
     }
 }
 
 // Search suffix function
 std::list<std::string> ArbolGeneral:: obtenerPalabrasPorSufijo(std::string suffix) {
     std::list<std::string> words;
-    NodoGeneral* node = root;
+    NodoGeneral* node = raiz;
     // Reverse the suffix
     std::string reversed_suffix = suffix;
     std::reverse(reversed_suffix.begin(), reversed_suffix.end());
@@ -121,18 +121,18 @@ std::list<std::string> ArbolGeneral:: obtenerPalabrasPorSufijo(std::string suffi
         }
         node = child;
     }
-    get_suffix_words(node, suffix, words);
+    obtener_sufijo_palabras(node, suffix, words);
     return words;
 }
 
 // Recursive function to retrieve suffix words from node
-void ArbolGeneral::get_suffix_words(NodoGeneral* node, std::string suffix, std::list<std::string>& words) {
+void ArbolGeneral::obtener_sufijo_palabras(NodoGeneral* node, std::string suffix, std::list<std::string>& words) {
     if (node->is_end_of_word) {
         // Reverse the suffix back to the original order
         //std::reverse(suffix.begin(), suffix.end());
         words.push_back(suffix);
     }
     for (auto child : node->children) {
-        get_suffix_words(child, child->data + suffix, words);
+        obtener_sufijo_palabras(child, child->data + suffix, words);
     }
 }

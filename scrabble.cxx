@@ -281,7 +281,7 @@ void Scrabble::terminal() {
 
              if(specialChars(comands[1]) || hasNumber(comands[1])) { // o no se encuentra en el diccionario 
 
-                cote("El sufijo nose pudo encontrarse en el diccionario");
+                cote("El sufijo pudo encontrarse en el diccionario");
              }
 
              else {

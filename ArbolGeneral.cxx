@@ -81,7 +81,7 @@ std::list<std::string> ArbolGeneral::obtenerPalabrasPorPrefijo(std::string prefi
     for (char c : prefijo) {
 
         NodoGeneral* child = nullptr;
-        for (std::list<NodoGeneral*>::iterator it = nodo->hijos.begin(); it != nodo->hijos.end(); ++it) {
+        for (std::list<NodoGeneral*>::iterator it = nodo->hijos.begin(); it != nodo->hijos.end(); it++) {
 
             if ((*it)->data == c) {
             
@@ -99,7 +99,7 @@ std::list<std::string> ArbolGeneral::obtenerPalabrasPorPrefijo(std::string prefi
     return words;
 }
 
-// Recursive function to retrieve words from node
+/*/ Recursive function to retrieve words from node
 void ArbolGeneral::obtener_palabras_nodo(NodoGeneral* node, std::string prefijo, std::list<std::string>& palabras) {
     if (node->is_end_of_word) {
        
@@ -110,7 +110,17 @@ void ArbolGeneral::obtener_palabras_nodo(NodoGeneral* node, std::string prefijo,
        
         obtener_palabras_nodo(*it, (*it)->data + prefijo, palabras);
     }
+}*/
+
+void ArbolGeneral::obtener_palabras_nodo(NodoGeneral* node, std::string prefijo, std::list<std::string>& palabras) {
+    if (node->is_end_of_word) {
+        palabras.push_back(prefijo);
+    }
+    for (NodoGeneral* child : node->hijos) {
+        obtener_palabras_nodo(child, prefijo + child->data, palabras);
+    }
 }
+
 
 
 // Search suffix function

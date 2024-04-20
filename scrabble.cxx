@@ -270,9 +270,10 @@ void Scrabble::terminal() {
                 cote("Las palabras que inician con este prefijo son: ");
                 std::list<std::string> prefijos =dic.obtenerPalabrasPorPrefijo(comands[1]); 
                 std::list<std::string>::iterator itPrefijos;
+                std::cout << "PALABRAS  " << " PUNTAJE " << "CANT_LETRAS" << std::endl;
                 for(itPrefijos = prefijos.begin(); itPrefijos != prefijos.end(); itPrefijos++ ) {
 
-                    std::cout << *itPrefijos << std::endl;
+                    std::cout <<*itPrefijos << "     "<< this->puntajePalabra(*itPrefijos) << "        " << (*itPrefijos).size() <<std::endl;
                 } 
              }
         }
@@ -289,9 +290,10 @@ void Scrabble::terminal() {
                 cote("Las palabras que terminan con este sufijo son: ");
                 std::list<std::string> sufijos = dic.obtenerPalabrasPorSufijo(comands[1]);
                 std::list<std::string>::iterator itSufijos;
+                std::cout << "PALABRAS  " << " PUNTAJE " << "CANT_LETRAS" << std::endl;
                 for(itSufijos = sufijos.begin(); itSufijos != sufijos.end(); itSufijos++ ) {
 
-                    std::cout << *itSufijos << std::endl;
+                    std::cout <<*itSufijos << "     "<< this->puntajePalabra(*itSufijos ) << "        " << (*itSufijos ).size() <<std::endl;
                 } 
              }
         }

@@ -6,6 +6,7 @@
 
 
 int main() {
+    std::cout << "un holid" <<std::endl;
     Scrabble scrabble;
     scrabble.terminal();
 

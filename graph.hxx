@@ -179,11 +179,16 @@ std::vector<std::string> Grafo::retConexiones(std::string val) {
         }
 
        else if (std::abs((double)val1.size() - val2.size()) == 1) {
+   
             std::string longer, shorter;
             if (val1.size() > val2.size()) {
+   
                 longer = val1;
                 shorter = val2;
-            } else {
+            }
+
+            else {
+
                 longer = val2;
                 shorter = val1;
             }
@@ -193,13 +198,19 @@ std::vector<std::string> Grafo::retConexiones(std::string val) {
             bool escape = false;
             int i = 0, j = 0;
             while (i < longer.length() && j < shorter.length() && !escape) {
+
                 std::cout << "Comparing characters: " << longer[i] << " and " << shorter[j] << std::endl;
                 if (longer[i] != shorter[j]) {
+
                     if (i != j) {
+
                         escape = true;
                     }
+
                     i++;
-                } else {
+                } 
+                else {
+
                     i++;
                     j++;
                 }
@@ -208,6 +219,7 @@ std::vector<std::string> Grafo::retConexiones(std::string val) {
             std::cout << "Escape status: " << escape << std::endl;
 
             if (!escape) {
+
                 this->mAdyacencia[index1][index2] = true;
                 this->mAdyacencia[index2][index1] = true;
                 conectado = true;

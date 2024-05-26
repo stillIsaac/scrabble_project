@@ -252,3 +252,212 @@ std::vector<std::string> Grafo::retConexiones(std::string val) {
 
 
 
+
+std::vector<std::string> Grafo::posibles_palabras(std::string letras) {
+    
+    std::vector<std::string> subsets = subset(letras);
+    int comodin = 0;
+    for (int i = 0; i < letras.size(); i++) {
+        
+        if(letras[i] == '?') {
+
+            comodin++;
+        }
+
+    }
+    
+    
+    std::vector<std::string> posibles; 
+    for (int i = 0; i < this->vs.size(); i++) {
+        
+        for(int j = 0; j < subsets.size(); j++ ) {
+
+
+            if( this->vs[i].size() == subsets[j].size()) {
+
+                if(this->comparaCaracteres(vs[i], subsets[j])) {
+                   
+                   std::vector<std::string> conexiones = this->retConexiones(vs[i]);
+                  // this->anadirComodin(conexiones, vs[i]);
+                   for (int k = 0; k < conexiones.size(); k++) {
+
+                        if(diferenciaCadena(conexiones[k], letras) == 0) {
+                            
+                            posibles.push_back(conexiones[k]);
+                        }
+
+                        else if( diferenciaCadena(conexiones[k], letras) <= comodin) {
+
+                            posibles.push_back(conexiones[k]);
+                        
+                        }
+                                       
+                    }
+                }
+            }
+        }
+    }
+
+   this->eliminarDuplicados(posibles);
+   return posibles; 
+}
+
+
+
+void Grafo::generarSubsets(std::string &str, std::string current, int index, std::vector<std::string>&subsets) {
+
+    if(index == str.length()) {
+
+        if(current.length() >= 2) {
+            subsets.push_back(current);
+        }
+        return;
+    }
+
+    this->generarSubsets(str, current, index+1, subsets);
+
+    this->generarSubsets(str, current + str[index], index+1, subsets);
+}
+
+
+
+std::vector<std::string> Grafo::subset(std::string letras){
+
+    std::vector<std::string>subs;
+    this->generarSubsets(letras, "", 0, subs);
+    
+    return subs;
+}
+
+
+
+bool Grafo::comparaCaracteres(std::string pal1, std::string pal2) {
+
+    int count = 0; bool si = false;
+
+    for (int i = 0; i < pal1.size(); i++) {
+        
+        for (int j = 0; j < pal2.size(); j++) {
+            
+            if(pal1[i] == pal2[j]) {
+
+                count++;
+                break;
+            }
+        }
+        
+    }
+
+    if(count == pal1.size()) {
+
+        si = true;
+    }
+
+    return si;
+    
+}
+
+
+
+
+void  Grafo::anadirComodin(std::vector<std::string> &conexiones, std::string palabra) {
+
+
+    for (int i = 0; i < conexiones.size(); i++) {
+        
+        for (int j = 0; j < conexiones[i].size(); j++) {
+            
+           if( conexiones[i].size() > palabra.size()) {
+                
+                bool cambio = false;
+                for (int k = 0; k < palabra.size(); k++) {
+                
+                    if(conexiones[i][k] != palabra[k]) {
+
+                        conexiones[i][k] = '?';
+                        cambio = true;
+                    }
+                }
+                if(cambio == false) {
+
+                    conexiones[i][conexiones[i].size()-1] = '?';
+                }            
+
+            }
+            else {
+
+                for (int k = 0; k < conexiones[i].size(); k++) {
+                
+                    if(conexiones[i][k] != palabra[k]) {
+
+                        conexiones[i][k] = '?';
+                    }
+                }
+                
+            } 
+        }
+        
+    }
+    
+}
+
+
+
+
+
+void  Grafo::eliminarDuplicados(std::vector<std::string> & posibles) {
+
+    std::vector<std::string> unique;
+    for (int i = 0; i < posibles.size(); i++) {
+
+        bool duplicado = false;
+        for (int j = 0; j < unique.size(); j++) {
+
+            if(unique[j] == posibles[i]) {
+
+                duplicado = true;
+            }
+        }
+        
+        if(!duplicado) {
+
+            unique.push_back(posibles[i]);
+        }
+    }
+    posibles = unique;    
+}
+
+
+
+
+
+
+int Grafo::diferenciaCadena(std::string conexion, std::string cadena) {
+
+    bool elBreak = false;
+    for (int i = 0; i <conexion.size() && !elBreak; i++) {
+    
+        for (int j = 0; j < cadena.size() && !elBreak; j++) {
+        
+            if(conexion.size() == 0) {
+
+                elBreak = true;
+            }
+            
+            else if(conexion[i] == cadena[j]) {
+
+                conexion.erase(i, 1);
+                i--;
+                cadena.erase(j,1);
+                j--;
+            }
+        }
+        
+    }
+
+    return conexion.size();
+    
+}
+
+
+

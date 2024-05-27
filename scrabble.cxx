@@ -3,7 +3,7 @@
 #include "ArbolGeneral.h"
 #include <iostream>
 #include <bits/stdc++.h>
-
+#include "graph.h"
 Scrabble::Scrabble() {
 
 };
@@ -128,6 +128,7 @@ void Scrabble::terminal() {
     bool control = false;
     std::string comand;
     Diccionario dic;
+    Grafo grafo(5);
     while(!control) {
 
       
@@ -135,7 +136,7 @@ void Scrabble::terminal() {
         std::getline(std::cin,comand);
         std::vector<std::string> comands = tokenize(comand);
 
-        if(comands.size()<2 && comand != "salir") {
+        if(comands.size()<2 && (comand != "salir") && ( comand != "grafo_de_palabras")) {
 
             cot("comando: ");
             cot(comand);
@@ -270,10 +271,10 @@ void Scrabble::terminal() {
                 cote("Las palabras que inician con este prefijo son: ");
                 std::list<std::string> prefijos =dic.obtenerPalabrasPorPrefijo(comands[1]); 
                 std::list<std::string>::iterator itPrefijos;
-                std::cout << "PALABRAS  " << " PUNTAJE " << "CANT_LETRAS" << std::endl;
+                std::cout << "PALABRAS" << "\t"<< "    PUNTAJE"<< "\t" << "\t" << "CANT_LETRAS" << std::endl;
                 for(itPrefijos = prefijos.begin(); itPrefijos != prefijos.end(); itPrefijos++ ) {
 
-                    std::cout <<*itPrefijos << "     "<< this->puntajePalabra(*itPrefijos) << "        " << (*itPrefijos).size() <<std::endl;
+                    std::cout << *itPrefijos << "\t" << "\t"<< "\t" << this->puntajePalabra(*itPrefijos) << "      " <<"\t" << "\t"<<(*itPrefijos).size() << std::endl;
                 } 
              }
         }
@@ -290,10 +291,10 @@ void Scrabble::terminal() {
                 cote("Las palabras que terminan con este sufijo son: ");
                 std::list<std::string> sufijos = dic.obtenerPalabrasPorSufijo(comands[1]);
                 std::list<std::string>::iterator itSufijos;
-                std::cout << "PALABRAS  " << " PUNTAJE " << "CANT_LETRAS" << std::endl;
+                std::cout << "PALABRAS" << "\t"<< "    PUNTAJE"<< "\t" << "\t" << "CANT_LETRAS" << std::endl;
                 for(itSufijos = sufijos.begin(); itSufijos != sufijos.end(); itSufijos++ ) {
 
-                    std::cout <<*itSufijos << "     "<< this->puntajePalabra(*itSufijos ) << "        " << (*itSufijos ).size() <<std::endl;
+                    std::cout << *itSufijos << "\t" << "\t"<< "\t" << this->puntajePalabra(*itSufijos) << "      " <<"\t" << "\t"<<(*itSufijos).size() << std::endl;
                 } 
              }
         }
@@ -301,14 +302,23 @@ void Scrabble::terminal() {
 
         else if(comand == "grafo_de_palabras") {
 
-            if(true) {
+            if(!dic.vec_palabras.empty()) {            
+            
+                if(grafo.insertarDiccionario(dic.vec_palabras)) {
 
-                cote("Grafo construido correctamente");
+                   grafo.connect(); 
+                    cote("Grafo construido correctamente");
+                }
+
+                else {
+
+                    cote("Problemas tecnicos, no se pudo construir el grafo");
+                }
             }
 
             else {
 
-                cote("Problemas tecnicos, no se pudo construir el grafo");
+                cote("El diccionario no ha sido inicializado");
             }
         }
 
@@ -322,6 +332,13 @@ void Scrabble::terminal() {
              else {
 
                 cote("Las posibles palabras a construir con las letras letras son: ");
+                std::vector<std::string> posiblesPalabras = grafo.posibles_palabras(comands[1]);
+                std::cout << "PALABRAS" << "\t"<< "    PUNTAJE"<< "\t" << "\t" << "CANT_LETRAS" << std::endl;
+                for (int i = 0; i < posiblesPalabras.size(); i++) {
+                
+                    std::cout << posiblesPalabras[i] << "\t" << "\t"<< "\t" << this->puntajePalabra(posiblesPalabras[i]) << "      " <<"\t" << "\t"<<posiblesPalabras[i].size() << std::endl;
+                }
+                
              }
         }
 

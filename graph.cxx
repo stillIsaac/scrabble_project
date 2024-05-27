@@ -5,6 +5,11 @@
 #include <algorithm>
 #include <string>
 #include <cmath>
+
+Grafo::Grafo() {
+
+
+}
 Grafo::Grafo(int vertices) {
     this->mAdyacencia.resize(vertices, std::vector<bool>(vertices, 0));
     this->vs.resize(vertices);
@@ -193,13 +198,11 @@ std::vector<std::string> Grafo::retConexiones(std::string val) {
                 shorter = val1;
             }
 
-            std::cout << "Checking strings of different lengths: " << longer << " (longer) and " << shorter << " (shorter)" << std::endl;
 
             bool escape = false;
             int i = 0, j = 0;
             while (i < longer.length() && j < shorter.length() && !escape) {
 
-                std::cout << "Comparing characters: " << longer[i] << " and " << shorter[j] << std::endl;
                 if (longer[i] != shorter[j]) {
 
                     if (i != j) {
@@ -216,7 +219,6 @@ std::vector<std::string> Grafo::retConexiones(std::string val) {
                 }
             }
 
-            std::cout << "Escape status: " << escape << std::endl;
 
             if (!escape) {
 
@@ -459,5 +461,22 @@ int Grafo::diferenciaCadena(std::string conexion, std::string cadena) {
     
 }
 
+
+ bool Grafo::insertarDiccionario(std::vector<std::vector<std::string>> dic) {
+
+    bool insertado = false;
+    for (int i = 0; i < dic.size(); i++) {
+        for (int j = 0; j < dic[i].size(); j++) {
+        
+            this->insert(dic[i][j]);
+        }
+        
+    }
+
+    insertado = true;
+
+
+    return insertado;
+ }
 
 

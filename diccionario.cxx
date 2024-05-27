@@ -4,6 +4,7 @@
 #include <fstream>
 #include <string>
 #include "scrabble.h"
+#include <cctype>   
 Diccionario::Diccionario() {
 
 };
@@ -27,6 +28,9 @@ bool Diccionario::inicializarDiccionario(std::string nombreArchivo) {
             
 
             myfile >> mystring;
+            for (char& c : mystring) {
+                c = std::tolower(c);
+            }
             if(int(mystring[0])-96 > vec_palabras.size()) {
         
                 this->vec_palabras.resize(int(mystring[0])-96);

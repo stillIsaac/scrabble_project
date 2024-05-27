@@ -9,6 +9,7 @@
 class Grafo {
 public:
 
+    Grafo();
     Grafo(int vertices);
     std::vector<std::vector<bool>> mAdyacencia;
     std::vector<std::string> vs;
@@ -33,9 +34,8 @@ public:
     void anadirComodin(std::vector<std::string> &conexiones, std::string palabra);
     void eliminarDuplicados(std::vector<std::string> & posibles);
     int diferenciaCadena(std::string conexion, std::string cadena);
-
+    bool insertarDiccionario(std::vector<std::vector<std::string>> dic); 
 
 };
 
-#include "graph.hxx"
 #endif

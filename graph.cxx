@@ -35,7 +35,7 @@ bool Grafo::insert(std::string valor) {
     }
     return insertado;
 }
-
+/*
 bool Grafo::addArista(std::string valor1, std::string valor2) {
 
     bool insertada = false;
@@ -63,7 +63,7 @@ bool Grafo::addArista(std::string valor1, std::string valor2) {
 
     return insertada;
 }
-
+*/
 bool Grafo::deleteV(std::string valor) {
     bool eliminado = false;
     auto it = std::find(vs.begin(), vs.end(), valor);
@@ -92,32 +92,6 @@ void Grafo::printMAdyacencia() {
         std::cout << std::endl; // Print newline after each row
     }
 }
-
-void Grafo::iterativeDFS(std::string valor) {
-    std::queue<std::string> pila1;
-    std::vector<std::string> visitados;
-    pila1.push(valor);
-    while (!pila1.empty()) {
-        std::string v = pila1.front();
-        pila1.pop();
-        bool visitado = false;
-        for (int k = 0; k < visitados.size() && !visitado; k++) {
-            if (visitados[k] == v) {
-                visitado = true;
-            }
-        }
-
-        if (!visitado) {
-            std::cout << v << "-";
-            visitados.push_back(v);
-            std::vector<std::string> aristas = retConexiones(v);
-            for (const auto& it : aristas) {
-                pila1.push(it);
-            }
-        }
-    }
-}
-
 std::vector<std::string> Grafo::retConexiones(std::string val) {
     int index;
     for (int i = 0; i < vs.size(); i++) {
@@ -136,7 +110,7 @@ std::vector<std::string> Grafo::retConexiones(std::string val) {
 
     return conexiones;
 }
-
+/*
     void Grafo::recursiveDFS(std::string valor) {
         std::vector<std::string> visited;
         recursiveDFSHelper(valor, visited);
@@ -156,7 +130,7 @@ std::vector<std::string> Grafo::retConexiones(std::string val) {
     }
 
 
-
+*/
     void Grafo::connect() {
 
         for (int i = 0; i < vs.size(); i++) {
@@ -177,7 +151,7 @@ std::vector<std::string> Grafo::retConexiones(std::string val) {
     bool Grafo::checkConnection(std::string val1, std::string val2, int index1, int index2) {
         
         bool conectado = false;
-        std::cout << val1 << "  " << val2 << std::endl;
+        
         if(pow((double)val1.size()-val2.size(), 2) > 1) {
 
             conectado = false;
@@ -361,7 +335,7 @@ bool Grafo::comparaCaracteres(std::string pal1, std::string pal2) {
 
 
 
-
+/*
 void  Grafo::anadirComodin(std::vector<std::string> &conexiones, std::string palabra) {
 
 
@@ -403,7 +377,7 @@ void  Grafo::anadirComodin(std::vector<std::string> &conexiones, std::string pal
     
 }
 
-
+*/
 
 
 

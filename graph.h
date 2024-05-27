@@ -16,13 +16,12 @@ public:
 
 
     bool insert(std::string valor);
-    bool addArista(std::string valor1, std::string valor2);
+    //bool addArista(std::string valor1, std::string valor2);
     bool deleteV(std::string valor);
     void printMAdyacencia(); 
-    void iterativeDFS(std::string valor);
     std::vector<std::string> retConexiones(std::string val);
-    void recursiveDFS(std::string valor);
-    void recursiveDFSHelper(std::string valor, std::vector<std::string>& visited);
+    //void recursiveDFS(std::string valor);
+    //void recursiveDFSHelper(std::string valor, std::vector<std::string>& visited);
     void connect();
     bool checkConnection(std::string val1,std::string val2, int index1, int index2 );
     std::vector<std::string> posibles_palabras(std::string letras);
@@ -31,7 +30,7 @@ public:
     std::vector<std::string> sinDuplicados(std::vector<std::string> palabras);
     void generarSubsets(std::string &str, std::string current, int index, std::vector<std::string>&subsets);
     bool comparaCaracteres(std::string pal1, std::string pal2);
-    void anadirComodin(std::vector<std::string> &conexiones, std::string palabra);
+   // void anadirComodin(std::vector<std::string> &conexiones, std::string palabra);
     void eliminarDuplicados(std::vector<std::string> & posibles);
     int diferenciaCadena(std::string conexion, std::string cadena);
     bool insertarDiccionario(std::vector<std::vector<std::string>> dic); 

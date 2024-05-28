@@ -34,7 +34,7 @@ bool Grafo::insert(std::string valor) {
         insertado = true;
     }
     return insertado;
-}
+} 
 /*
 bool Grafo::addArista(std::string valor1, std::string valor2) {
 
@@ -250,25 +250,24 @@ std::vector<std::string> Grafo::posibles_palabras(std::string letras) {
 
 
             if( this->vs[i].size() == subsets[j].size()) {
-
-                if(this->comparaCaracteres(vs[i], subsets[j])) {
+                 
                    
-                   std::vector<std::string> conexiones = this->retConexiones(vs[i]);
-                  // this->anadirComodin(conexiones, vs[i]);
-                   for (int k = 0; k < conexiones.size(); k++) {
+                std::vector<std::string> conexiones = this->retConexiones(vs[i]);
+               // this->anadirComodin(conexiones, vs[i]);
+                for (int k = 0; k < conexiones.size(); k++) {
 
-                        if(diferenciaCadena(conexiones[k], letras) == 0) {
-                            
-                            posibles.push_back(conexiones[k]);
-                        }
-
-                        else if( diferenciaCadena(conexiones[k], letras) <= comodin) {
-
-                            posibles.push_back(conexiones[k]);
+                    if(diferenciaCadena(conexiones[k], letras) == 0) {
                         
-                        }
-                                       
+                        posibles.push_back(conexiones[k]);
                     }
+
+                    else if( diferenciaCadena(conexiones[k], letras) <= comodin) {
+
+                        posibles.push_back(conexiones[k]);
+                    
+                    }
+                                       
+                    
                 }
             }
         }
@@ -335,7 +334,7 @@ bool Grafo::comparaCaracteres(std::string pal1, std::string pal2) {
 
 
 
-/*
+
 void  Grafo::anadirComodin(std::vector<std::string> &conexiones, std::string palabra) {
 
 
@@ -377,7 +376,7 @@ void  Grafo::anadirComodin(std::vector<std::string> &conexiones, std::string pal
     
 }
 
-*/
+
 
 
 
@@ -435,22 +434,60 @@ int Grafo::diferenciaCadena(std::string conexion, std::string cadena) {
     
 }
 
-
+/*
  bool Grafo::insertarDiccionario(std::vector<std::vector<std::string>> dic) {
 
     bool insertado = false;
+    int count = 0;
     for (int i = 0; i < dic.size(); i++) {
+        count += dic[i].size();
         for (int j = 0; j < dic[i].size(); j++) {
         
             this->insert(dic[i][j]);
         }
         
     }
-
     insertado = true;
 
 
     return insertado;
  }
 
+*/
+void Grafo::preResize(int vertices) {
 
+     this->mAdyacencia.resize(vertices, std::vector<bool>(vertices, 0));
+     this->vs.resize(vertices);
+
+
+}
+
+void Grafo::insert2(std::string cadena) {
+
+    bool insertado = false;
+    for (int i = 0; i < this->vs.size() && !insertado; i++) {
+        if (vs[i] == std::string{}) {
+            vs[i] = cadena;
+            insertado = true;
+        }
+    }
+    
+}
+
+bool Grafo::insertarDiccionario(std::vector<std::vector<std::string>> dic) {
+
+    bool insertado = false;
+    int count = 0;
+    for (int i = 0; i < dic.size(); i++) {
+        count += dic[i].size();
+        for (int j = 0; j < dic[i].size(); j++) {
+        
+            this->insert(dic[i][j]);
+        }
+        
+    }
+    insertado = true;
+
+
+    return insertado;
+}

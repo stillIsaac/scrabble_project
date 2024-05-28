@@ -153,12 +153,12 @@ void Scrabble::terminal() {
         else if( comands[0] == "inicializar") {
             
 
-            if(comands[1] == "diccionario.txt") { // need to change this
+            if(comands[1] == "diccionario.txt" || comands[1] == "diccionario2.txt") { //eed to change this
 
                 if(dic.vec_palabras.size() <= 0) {
 
                     cote("El diccionario se ha inicializado correctamente");
-                    dic.inicializarDiccionario( "diccionario.txt");
+                    dic.inicializarDiccionario( comands[1]);
                     //dic.mostraPalabras();
                     
                 }
@@ -218,7 +218,7 @@ void Scrabble::terminal() {
         else if( comands[0] == "iniciar_arbol") {
             
 
-            if(comands[1] == "diccionario.txt") { // need to change this
+            if(comands[1] == "diccionario.txt" || comands[1] == "diccionario2.txt") { // need to change this
                 
                 if(dic.iniciarArbol(comands[1])) {
 
@@ -305,9 +305,10 @@ void Scrabble::terminal() {
             if(!dic.vec_palabras.empty()) {            
             
                 if(grafo.insertarDiccionario(dic.vec_palabras)) {
+                    
 
-                   grafo.connect(); 
                     cote("Grafo construido correctamente");
+                   grafo.connect(); 
                 }
 
                 else {
@@ -324,7 +325,7 @@ void Scrabble::terminal() {
 
         else if(comands[0] == "posibles_palabras") {
          
-             if(specialChars(comands[1]) || hasNumber(comands[1])) { // o no se encuentra en el diccionario 
+             if( hasNumber(comands[1])) { // o no se encuentra en el diccionario 
 
                 cote("La cadena letras contiene simbolos invalidos");
              }

@@ -30,10 +30,14 @@ public:
     std::vector<std::string> sinDuplicados(std::vector<std::string> palabras);
     void generarSubsets(std::string &str, std::string current, int index, std::vector<std::string>&subsets);
     bool comparaCaracteres(std::string pal1, std::string pal2);
-   // void anadirComodin(std::vector<std::string> &conexiones, std::string palabra);
+    void anadirComodin(std::vector<std::string> &conexiones, std::string palabra);
     void eliminarDuplicados(std::vector<std::string> & posibles);
     int diferenciaCadena(std::string conexion, std::string cadena);
-    bool insertarDiccionario(std::vector<std::vector<std::string>> dic); 
+    bool insertarDiccionario(std::vector<std::vector<std::string>> dic);
+    void preResize(int vertices);
+    void insert2(std::string cadena);
+
+    bool insertarDiccionario2(std::vector<std::vector<std::string>> dic); 
 
 };
 

@@ -18,7 +18,7 @@ bool Diccionario::inicializarDiccionario(std::string nombreArchivo) {
     
     bool open = false;
     std::ifstream myfile; 
-    myfile.open("diccionario.txt");
+    myfile.open(nombreArchivo);
     std::string mystring;
     std::vector<std::string> vec;
     if(myfile.is_open()) {
